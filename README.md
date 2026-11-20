@@ -7,24 +7,29 @@
 A newspaper front page summing up the world's news of Friday 20 November
 2026, built for the [news-image-20261120 bounty on make.fun](https://make.fun/bounty/news-image-20261120).
 
-Lead story: Severe Cyclonic Storm Akvan makes landfall on India's east
-coast at midday, with more than 300,000 people evacuated. Also on the
-page: the COP31 final plenary in Antalya closes without a fossil-fuel
-pledge; Russian strikes damage the Austrian and Dutch embassies in Kyiv;
-Trump, Xi and Putin hold their first three-way talks at APEC in Shenzhen;
-Fiji declares a disaster as drought bites; and South Korea's Supreme
-Court clears former prime minister Han Duck-soo.
+Lead story: President Trump says there is "no rush" on a decision over
+war with Iran and pushes it into 2027. Also on the page: Cyclone Akvan
+bears down on Odisha with 300,000 people evacuated; NASA confirms
+Voyager 1 is now a full light-day from Earth; Europe says it is open to
+talks with Russia on ending the Ukraine war; the UN's top court rules
+Myanmar committed genocide against the Rohingya; engine trouble ends
+Japan's Hayabusa2 asteroid landing plan; plus briefs on GTA 6 sales,
+New Zealand's Test against India, and a migrant boat sinking off
+Senegal.
 
 ## Files
 
 - `entry.png` — the front-page image (1024×1024, drawn by
-  `make_frontpage.py` with Pillow).
-- `make_frontpage.py` — the drawing script; run it to regenerate the image.
-- `main.ts` — the entrypoint: copies `entry.png` to the output folder.
+  `draw_frontpage.py` with Pillow; no photograph or clip art is used).
+- `draw_frontpage.py` — the drawing script; run it to regenerate the
+  image from scratch.
+- `main.ts` — the entrypoint (Node 22, standard library only): copies
+  `entry.png` to the output folder.
 
 ## Run
 
 ```sh
+python3 draw_frontpage.py
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 

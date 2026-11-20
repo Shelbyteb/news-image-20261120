@@ -1,13 +1,21 @@
-// News-image entry for 20 November 2026 (Node 22, standard library only).
-// The front page is the entry.png beside this file, drawn by
-// make_frontpage.py; this program copies it to the grader's output folder.
+// Entry for the news-image-20261120 bounty on make.fun.
 //
-// Run it outside the grader with:
+// The front page for Friday 20 November 2026 is the entry.png next to
+// this file, drawn by draw_frontpage.py with Pillow. This program runs
+// with Node 22 and the standard library only: it reads that image and
+// writes the same bytes to the grader's output folder, so both runs of
+// the program produce an identical file.
+//
+// Outside the grader, MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
-import { copyFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
+const here = dirname(fileURLToPath(import.meta.url));
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
-copyFileSync(new URL('./entry.png', import.meta.url),
-             join(outDir, 'entry.png'));
+
+mkdirSync(outDir, { recursive: true });
+const image = readFileSync(join(here, 'entry.png'));
+writeFileSync(join(outDir, 'entry.png'), image);
